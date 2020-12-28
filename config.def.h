@@ -38,6 +38,7 @@ static const char *const autostart[] = {
     "picom", "-CGb", NULL,
     "habak", "-ms", "-hi", "/etc/dwm/background.png", NULL,
     "/etc/dwm/bar_emoji.sh", "NULL",
+    "xautolock", "-time", "30", "-locker", "slock", NULL,
     // "screenkey", NULL,
 	NULL /* terminate */
 };
