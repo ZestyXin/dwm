@@ -35,7 +35,8 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-    "fcitx", NULL,
+    // "fcitx", NULL,
+    "ibus-daemon", "-drx", NULL,
     "picom", "-CGb", NULL,
     "habak", "-ms", "-hi", "/etc/dwm/background.png", NULL,
     "/etc/dwm/bar_emoji.sh", "NULL",
