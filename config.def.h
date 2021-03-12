@@ -15,43 +15,34 @@ static const int viewontag          = 1;        /* Switch view on tag switch */
 static const char *fonts[]          = { "Source Code Pro:size=15" };
 static const char dmenufont[]       = "Source Code Pro:size=15";
 
-static const char col_black[]       = "#121212";  /*  0: black    */
-static const char col_red[]         = "#fa2573";  /*  1: red      */
-static const char col_green[]       = "#98e123";  /*  2: green    */
-static const char col_yellow[]      = "#dfd460";  /*  3: yellow   */
-static const char col_blue[]        = "#1080d0";  /*  4: blue     */
-static const char col_magenta[]     = "#8700ff";  /*  5: magenta  */
-static const char col_cyan[]        = "#43a8d0";  /*  6: cyan     */
-static const char col_white[]       = "#bbbbbb";  /*  7: white    */
-static const char col_br_black[]    = "#555555";  /*  8: brblack  */
-static const char col_br_red[]      = "#f6669d";  /*  9: brred    */
-static const char col_br_green[]    = "#b1e05f";  /* 10: brgreen  */
-static const char col_br_yellow[]   = "#fff26d";  /* 11: bryellow */
-static const char col_br_blue[]     = "#00afff";  /* 12: brblue   */
-static const char col_br_magenta[]  = "#af87ff";  /* 13: brmagenta*/
-static const char col_br_cyan[]     = "#51ceff";  /* 14: brcyan   */
-static const char col_br_white[]    = "#ffffff";  /* 15: brwhite  */
-
 static const char col_norm_fg[]     = "#bbbbbb";
-static const char col_sel_fg[]      = "#121212";
 static const char col_norm_bg[]     = "#121212";
-static const char col_sel[]         = "#af87ff";
-static const char col_status[]      = "#248888";
-static const char col_tag_sel[]     = "#f0d879";
-static const char col_info_sel[]    = "#e7475e";
-static const char col_cli_bd[]      = "#98e123";
+static const char col_sel_fg[]      = "#121212";
+//static const char col_sel[]         = "#af87ff";
+//static const char col_status[]      = "#248888";
+//static const char col_tag_sel[]     = "#f0d879";
+//static const char col_info_sel[]    = "#e7475e";
+
+static const char col_white[]       = "#bbbbbb";
+static const char col_black[]       = "#121212";
+static const char col_red[]     = "#f39189";
+static const char col_br_red[]  = "#bb8082";
+static const char col_yellow[]         = "#f0d879";
+static const char col_gray[]        = "#6e7582";
+static const char col_blue[]        = "#046582";
+static const char col_green[]      = "#98e123";
 
  const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*                    fg           bg            border   */
-	[SchemeNorm]      = { col_norm_fg, col_norm_bg,  "#000000" },
-	[SchemeSel]       = { col_sel_fg,  col_sel,      col_cli_bd  },
-	[SchemeStatus]    = { col_sel_fg,  col_status,   "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]   = { col_sel_fg,  col_tag_sel,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-	[SchemeTagsNorm]  = { col_norm_fg, col_norm_bg,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]   = { col_sel_fg,  col_info_sel, "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-	[SchemeInfoNorm]  = { col_norm_fg, col_norm_bg,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeNorm]      = { col_black, col_blue,    "#000000" },
+	[SchemeSel]       = { col_black, col_white,   col_green  },
+	[SchemeStatus]    = { col_black, col_blue,    "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]   = { col_black, col_br_red,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm]  = { col_black, col_red,     "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]   = { col_white,   col_blue,    "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { col_gray, col_blue,    "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -121,7 +112,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_cyan, "-nf", col_white, "-sb", col_br_cyan, "-sf", col_br_white, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_green, "-sf", col_black, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *volup[] = { "amixer", "-qM", "set", "Master", "2%+", "umute", NULL };
@@ -202,7 +193,7 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[13]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
